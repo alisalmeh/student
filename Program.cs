@@ -42,6 +42,11 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             {
                 Console.WriteLine(item);
             }
+
+            // Average of class score
+            var fifthQuery = studentList.Average(s => s.Score);
+
+            Console.WriteLine($"\nAverage score of the class is: {fifthQuery}");
         }
     }
 }
