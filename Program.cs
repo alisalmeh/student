@@ -13,23 +13,13 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             var firstQuery = studentList.Where(s => s.IsActive && s.Score > 80 && s.City == "NYC")
                                         .Select(s => s.StudentName);
 
-            Console.WriteLine("First query result: ");
-
-            foreach (var item in firstQuery)
-            {
-                Console.WriteLine(item);
-            }
+            PrintQueryResult(firstQuery, "First");
 
             // score > 80 || CA city -> just their names 
             var secondQuery = studentList.Where(s => s.Score > 80 || s.City == "CA")
                                          .Select(s => s.StudentName);
 
-            Console.WriteLine("\nSecond query result: ");
-
-            foreach (var item in secondQuery)
-            {
-                Console.WriteLine(item);
-            }
+            PrintQueryResult(secondQuery, "Second");
 
             // Name started with 'B' then projected to MinimalStudent Class
             var thirdQuery = studentList.Where(s => s.StudentName.ToUpper().StartsWith('B'))
@@ -39,24 +29,14 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
                                         })
                                         .Select(s => s.StudentName);
 
-            Console.WriteLine("\nThird query result: ");
-
-            foreach (var item in thirdQuery)
-            {
-                Console.WriteLine(item);
-            }
+            PrintQueryResult(thirdQuery, "Third");
 
             // NotActive students ordered descending by score
             var fourthQuery = studentList.Where(s => !s.IsActive)
                                          .OrderByDescending(s => s.Score)
                                          .Select(s => s.StudentName);
 
-            Console.WriteLine("\nFourth query result: ");
-
-            foreach (var item in fourthQuery)
-            {
-                Console.WriteLine(item);
-            }
+            PrintQueryResult(fourthQuery, "Fourth");
 
             // Average of class score
             var fifthQuery = studentList.Average(s => s.Score);
@@ -72,7 +52,16 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
 
             Console.WriteLine("\nAverage score of CA students with 'D' or 'R' in their names who are active is: " +
                                 sixthQuery);
+        }
 
+        private static void PrintQueryResult<T>(IQueryable<T> queryResult, string queryName)
+        {
+            Console.WriteLine($"\n{queryName} query result: ");
+
+            foreach (var item in queryResult)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
