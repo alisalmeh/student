@@ -19,6 +19,17 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             {
                 Console.WriteLine(item);
             }
+
+            // score > 80 || CA city -> just their names 
+            var secondQuery = studentList.Where(s => s.Score > 80 || s.City == "CA")
+                                         .Select(x => x.StudentName);
+
+            Console.WriteLine("\nSecond query results are: ");
+
+            foreach (var item in secondQuery)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
