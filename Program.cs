@@ -11,7 +11,7 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
 
             // Active students && score > 80 && NYC city
             var firstQuery = studentList.Where(s => s.IsActive && s.Score > 80 && s.City == "NYC")
-                                        .Select(x => x.StudentName);
+                                        .Select(s => s.StudentName);
 
             Console.WriteLine("First query result is: ");
 
@@ -22,7 +22,7 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
 
             // score > 80 || CA city -> just their names 
             var secondQuery = studentList.Where(s => s.Score > 80 || s.City == "CA")
-                                         .Select(x => x.StudentName);
+                                         .Select(s => s.StudentName);
 
             Console.WriteLine("\nSecond query results are: ");
 
@@ -33,8 +33,8 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
 
             // NotActive students ordered descending by score
             var fourthQuery = studentList.Where(s => !s.IsActive)
-                                         .OrderByDescending(x => x.Score)
-                                         .Select(x => x.StudentName);
+                                         .OrderByDescending(s => s.Score)
+                                         .Select(s => s.StudentName);
 
             Console.WriteLine("\nFourth query results are: ");
 
