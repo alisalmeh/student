@@ -13,7 +13,7 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             var firstQuery = studentList.Where(s => s.IsActive && s.Score > 80 && s.City == "NYC")
                                         .Select(s => s.StudentName);
 
-            Console.WriteLine("First query result is: ");
+            Console.WriteLine("First query result: ");
 
             foreach (var item in firstQuery)
             {
@@ -24,7 +24,7 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             var secondQuery = studentList.Where(s => s.Score > 80 || s.City == "CA")
                                          .Select(s => s.StudentName);
 
-            Console.WriteLine("\nSecond query results are: ");
+            Console.WriteLine("\nSecond query result: ");
 
             foreach (var item in secondQuery)
             {
@@ -36,7 +36,7 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
                                          .OrderByDescending(s => s.Score)
                                          .Select(s => s.StudentName);
 
-            Console.WriteLine("\nFourth query results are: ");
+            Console.WriteLine("\nFourth query result: ");
 
             foreach (var item in fourthQuery)
             {
