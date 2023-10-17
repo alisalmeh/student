@@ -47,6 +47,17 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             var fifthQuery = studentList.Average(s => s.Score);
 
             Console.WriteLine($"\nAverage score of the class is: {fifthQuery}");
+
+            // Average score of students in CA && Active && ('D' || 'R' in their names)
+            var sixthQuery = studentList.Where(s => s.City == "CA" &&
+                                                    s.IsActive &&
+                                                    (s.StudentName.ToUpper().Contains('D') ||
+                                                    s.StudentName.ToUpper().Contains('R')))
+                                        .Average(s => s.Score);
+
+            Console.WriteLine("\nAverage score of CA students with 'D' or 'R' in their names who are active is: " +
+                                sixthQuery);
+
         }
     }
 }
