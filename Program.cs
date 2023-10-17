@@ -30,6 +30,18 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             {
                 Console.WriteLine(item);
             }
+
+            // NotActive students ordered descending by score
+            var fourthQuery = studentList.Where(s => !s.IsActive)
+                                         .OrderByDescending(x => x.Score)
+                                         .Select(x => x.StudentName);
+
+            Console.WriteLine("\nFourth query results are: ");
+
+            foreach (var item in fourthQuery)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
