@@ -13,13 +13,13 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
             var firstQuery = studentList.Where(s => s.IsActive && s.Score > 80 && s.City == "NYC")
                                         .Select(s => s.StudentName);
 
-            PrintQueryResult(firstQuery, "First");
+            PrintQueryResult<string>(firstQuery, "First");
 
             // score > 80 || CA city -> just their names 
             var secondQuery = studentList.Where(s => s.Score > 80 || s.City == "CA")
                                          .Select(s => s.StudentName);
 
-            PrintQueryResult(secondQuery, "Second");
+            PrintQueryResult<string>(secondQuery, "Second");
 
             // Name started with 'B' then projected to MinimalStudent Class
             var thirdQuery = studentList.Where(s => s.StudentName.ToUpper().StartsWith('B'))
@@ -29,14 +29,14 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
                                         })
                                         .Select(s => s.StudentName);
 
-            PrintQueryResult(thirdQuery, "Third");
+            PrintQueryResult<string>(thirdQuery, "Third");
 
             // NotActive students ordered descending by score
             var fourthQuery = studentList.Where(s => !s.IsActive)
                                          .OrderByDescending(s => s.Score)
                                          .Select(s => s.StudentName);
 
-            PrintQueryResult(fourthQuery, "Fourth");
+            PrintQueryResult<string>(fourthQuery, "Fourth");
 
             // Average of class score
             var fifthQuery = studentList.Average(s => s.Score);
