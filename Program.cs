@@ -31,6 +31,21 @@ namespace AliSalmeh_ProjectWeek12_LinqPractice
                 Console.WriteLine(item);
             }
 
+            // Name started with 'B' then projected to MinimalStudent Class
+            var thirdQuery = studentList.Where(s => s.StudentName.ToUpper().StartsWith('B'))
+                                        .Select(s => new MinimalStudent()
+                                        {
+                                            StudentName = s.StudentName
+                                        })
+                                        .Select(s => s.StudentName);
+
+            Console.WriteLine("\nThird query result: ");
+
+            foreach (var item in thirdQuery)
+            {
+                Console.WriteLine(item);
+            }
+
             // NotActive students ordered descending by score
             var fourthQuery = studentList.Where(s => !s.IsActive)
                                          .OrderByDescending(s => s.Score)
